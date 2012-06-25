@@ -1,5 +1,4 @@
 #import "BBWeeAppController-Protocol.h"
-#import "AutoScrollLabel.h"
 #import "WidgetHelper.h"
 #import "NPScrollView.h"
 
@@ -14,8 +13,6 @@ static NSBundle *_NowPlayingWeeAppBundle = nil;
     UIImageView *_placeHolder;
 }
 @property (nonatomic, retain) UIView *view;
-
-- (AutoScrollLabel *)addLabel:(NSString *)text size:(CGRect)labelSize;
 
 @end
 
@@ -61,19 +58,6 @@ static NSBundle *_NowPlayingWeeAppBundle = nil;
 	_placeHolder.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
 	[_view addSubview:_placeHolder];
-}
-
-- (AutoScrollLabel *)addLabel:(NSString *)text size:(CGRect)labelSize
-{
-    AutoScrollLabel *label = [[AutoScrollLabel alloc] initWithFrame:labelSize];
-    
-    label.backgroundColor = [UIColor clearColor];
-    label.textColor = [UIColor whiteColor];
-    label.scrollEnabled = YES;
-    
-    [label setText:text];
-    
-    return label;
 }
 
 - (void)unloadView
