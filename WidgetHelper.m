@@ -30,7 +30,7 @@ static WidgetHelper *sharedWidgetHelper;
     {
         NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
         
-        UIImage *bgImg = [UIImage imageWithContentsOfFile:@"/System/Library/WeeAppPlugins/NowPlayingBeta.bundle/WeeAppBackground.png"];
+        UIImage *bgImg = [UIImage imageWithContentsOfFile:@"/System/Library/WeeAppPlugins/NowPlaying.bundle/WeeAppBackground.png"];
         _stretchableBgImg = [[bgImg stretchableImageWithLeftCapWidth:floorf(bgImg.size.width / 2.f) topCapHeight:floorf(bgImg.size.height / 2.f)] retain];
         [pool drain];
     }
