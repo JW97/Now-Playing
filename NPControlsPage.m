@@ -309,6 +309,9 @@
     [bgView release];
     bgView = nil;
     
+    [faderView release];
+    faderView = nil;
+    
     [prevBtn release];
     prevBtn = nil;
     [playBtn release];
