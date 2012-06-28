@@ -85,6 +85,7 @@
 - (void)layoutSubviews
 {
     [bgView setFrame:CGRectMake(2, 0, self.frame.size.width - 4, self.frame.size.height)];
+    [faderView setFrame:CGRectMake(2, 0, self.frame.size.width - 4, self.frame.size.height)];
     
     [notPlayingLabel removeFromSuperview];
     [trackLabel removeFromSuperview];
@@ -189,7 +190,10 @@
 
 - (void)wasTapped
 {
-    [[objc_getClass("SBUIController") sharedInstance] activateApplicationFromSwitcher:[mediaController nowPlayingApplication]];
+    if (![[objc_getClass("SBAwayController") sharedAwayController] isDeviceLocked])
+    {
+        [[objc_getClass("SBUIController") sharedInstance] activateApplicationFromSwitcher:[mediaController nowPlayingApplication]];
+    }
 }
                            
 - (AutoScrollLabel *)addLabel:(NSString *)text size:(CGRect)labelSize

@@ -27,6 +27,9 @@
         
         [bgView setUserInteractionEnabled:YES];
         
+        faderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        faderView.userInteractionEnabled = YES;
+        
         //Buttons
         prevBtn = [[UIButton buttonWithType:UIButtonTypeCustom] retain];            
         
@@ -61,9 +64,9 @@
             nextBtn.frame = CGRectMake(floorf(self.frame.size.width / 2.0f + 23.0f + 12.0f), floorf(self.frame.size.height / 2.0f - 21.5f), 45.0f, 45.0f);
         }
         
-        [self addSubview:prevBtn];
-        [self addSubview:playBtn];
-        [self addSubview:nextBtn];
+        [faderView addSubview:prevBtn];
+        [faderView addSubview:playBtn];
+        [faderView addSubview:nextBtn];
         
         //Artwork        
         artwork = [[UIImageView alloc] initWithFrame:CGRectMake(6.0f + 2.0f, 6.0f, 59.0f, 59.0f)];
@@ -76,7 +79,7 @@
             artwork.image = art;
             [art release];
             
-            [self addSubview:artwork];
+            [faderView addSubview:artwork];
         }
         
         //Social buttons
@@ -96,8 +99,16 @@
         [twBtn addGestureRecognizer:twTap];
         [twTap release];
         
-        [self addSubview:fbBtn];
-        [self addSubview:twBtn];
+        [faderView addSubview:fbBtn];
+        [faderView addSubview:twBtn];
+        
+        faderView.alpha = 0.0f;
+        [self insertSubview:faderView atIndex:1];
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.5f];
+        faderView.alpha = 1.0f;
+        [UIView commitAnimations];
         
         [pool drain];
     }
@@ -108,6 +119,8 @@
 {
     //Background view    
     [bgView setFrame:CGRectMake(2, 0, self.frame.size.width - 4, self.frame.size.height)];
+    
+    [faderView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     
     //Control buttons
     prevBtn.frame = CGRectMake(floorf(self.frame.size.width / 2.0f - 22.5f - (self.frame.size.width / 320.0f * 20.0f) - 45.0f), floorf(self.frame.size.height / 2.0f - 21.5f), 45.0f, 45.0f);

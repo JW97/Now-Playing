@@ -1,9 +1,9 @@
 Package: com.JW97.nowplaying
 Name: Now Playing
 Depends: firmware (>= 5.0), com.saurik.substrate.safemode, applist
-Version: 1.0.1
+Version: 1.1
 Architecture: iphoneos-arm
 Description: An awesome widget for the notification center!
-Maintainer: Jack Willis
-Author: Jack Willis
+Maintainer: J_W97
+Author: J_W97
 Section: Addons (NotificationCenter)

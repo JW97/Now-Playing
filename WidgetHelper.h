@@ -20,6 +20,7 @@
 + (WidgetHelper *)sharedHelper;
 - (UIImage *)stretchableImage;
 - (UIImage *)springBoardImageNamed:(NSString *)name;
+- (id)preferenceObjectForKey:(NSString *)key;
 
 - (id)init;
 

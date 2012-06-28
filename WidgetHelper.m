@@ -48,6 +48,15 @@ static WidgetHelper *sharedWidgetHelper;
     return [UIImage imageNamed:name inBundle:springBoard];
 }
 
+- (id)preferenceObjectForKey:(NSString *)key
+{
+    NSString *path = @"/var/mobile/Library/Preferences/com.jw97.NowPlaying.plist";
+    
+    id obj = [[NSDictionary dictionaryWithContentsOfFile:path] objectForKey:key];
+    
+    return obj;
+}
+
 - (id)init
 {
     if ((self = [super init]))

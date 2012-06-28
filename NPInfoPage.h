@@ -10,6 +10,7 @@
 #import <UIKit/UIWindow2.h>
 #import <SpringBoard/SBMediaController.h>
 #import <SpringBoard/SBUIController.h>
+#import <SpringBoard/SBAwayController.h>
 #import "WidgetHelper.h"
 #import "AutoScrollLabel.h"
 

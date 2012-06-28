@@ -20,6 +20,8 @@
     UIImageView *bgView;
     WidgetHelper *widgetHelper;
     
+    UIView *faderView;
+    
     UIImageView *artwork;
     
     UIButton *prevBtn;

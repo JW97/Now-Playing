@@ -17,17 +17,27 @@
         hasBeenTouched = NO;
         
         self.contentSize = CGSizeMake(self.frame.size.width * 2, self.frame.size.height);
-        self.contentOffset = CGPointMake(self.frame.size.width, 0);
+        //self.contentOffset = CGPointMake(self.frame.size.width, 0);
         self.userInteractionEnabled = YES;
         self.showsHorizontalScrollIndicator = NO;
         self.pagingEnabled = YES;
         
+        NSNumber *defaultPage = [[WidgetHelper sharedHelper] preferenceObjectForKey:@"defaultPage"];
+        defaultPageInt = [defaultPage intValue];
+        
+        if (defaultPageInt == 0)
+        {
+            self.contentOffset = CGPointMake(self.frame.size.width, 0);
+        }
+        else if (defaultPageInt == 1)
+        {
+            self.contentOffset = CGPointMake(0, 0);
+        }
+        
         controlsPage = [[NPControlsPage alloc] initWithFrame:self.frame];
-        //[controlsPage setShowsBackground:NO];
         [self addSubview:controlsPage];
         
         infoPage = [[NPInfoPage alloc] initWithFrame:CGRectMake(self.frame.size.width, 0, self.frame.size.width, self.frame.size.height)];
-        //[infoPage setShowsBackground:NO];
         [self addSubview:infoPage];
     }
     return self;
@@ -41,7 +51,15 @@
     if (hasBeenTouched == NO)
     {
         hasBeenTouched = YES;
-        self.contentOffset = CGPointMake(self.frame.size.width, 0);
+        
+        if (defaultPageInt == 0)
+        {
+            self.contentOffset = CGPointMake(self.frame.size.width, 0);
+        }
+        else if (defaultPageInt == 1)
+        {
+            self.contentOffset = CGPointMake(0, 0);
+        }
     }
 }
 

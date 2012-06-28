@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "NPControlsPage.h"
 #import "NPInfoPage.h"
+#import "WidgetHelper.h"
 
 @interface NPScrollView : UIScrollView
-{
+{   
     NPControlsPage *controlsPage;
     NPInfoPage *infoPage;
+    
+    int defaultPageInt;
     
     BOOL hasBeenTouched;
 }
