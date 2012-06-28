@@ -12,6 +12,7 @@
 @interface WidgetHelper : NSObject
 {
     NSBundle *springBoard;
+    NSBundle *ownBundle;
     
     UIImage *_stretchableBgImg;
 }
@@ -20,6 +21,7 @@
 + (WidgetHelper *)sharedHelper;
 - (UIImage *)stretchableImage;
 - (UIImage *)springBoardImageNamed:(NSString *)name;
+- (UIImage *)ownImageNamed:(NSString *)name;
 - (id)preferenceObjectForKey:(NSString *)key;
 
 - (id)init;

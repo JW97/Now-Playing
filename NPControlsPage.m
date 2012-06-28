@@ -86,18 +86,31 @@
         ALApplicationList *list = [ALApplicationList sharedApplicationList];
         
         fbBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [fbBtn setBackgroundImage:[list iconOfSize:ALApplicationIconSizeLarge forDisplayIdentifier:@"com.facebook.Facebook"] forState:UIControlStateNormal];
         fbBtn.frame = CGRectMake(self.frame.size.width - 2.0f - 5.0f - 30.0f, 5.0f, 30.0f, 30.0f);
         UITapGestureRecognizer *fbTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fbBtnPressed)];
         [fbBtn addGestureRecognizer:fbTap];
         [fbTap release];
         
         twBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [twBtn setBackgroundImage:[list iconOfSize:ALApplicationIconSizeLarge forDisplayIdentifier:@"com.atebits.Tweetie2"] forState:UIControlStateNormal];
         twBtn.frame = CGRectMake(self.frame.size.width - 2.0f - 6.0f - 60.0f, 6.0f + 30.0f, 30.0f, 30.0f);
         UITapGestureRecognizer *twTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twBtnPressed)];
         [twBtn addGestureRecognizer:twTap];
         [twTap release];
+        
+        UIImage *fbImg = [list iconOfSize:ALApplicationIconSizeLarge forDisplayIdentifier:@"com.facebook.Facebook"];
+        UIImage *twImg = [list iconOfSize:ALApplicationIconSizeLarge forDisplayIdentifier:@"com.atebits.Tweetie2"];
+        
+        if (fbImg == nil)
+        {
+            fbImg = [widgetHelper ownImageNamed:@"facebook.png"];
+        }
+        
+        if (twImg == nil)
+        {
+            twImg = [widgetHelper ownImageNamed:@"twitter.png"];
+        }
+        [fbBtn setBackgroundImage:fbImg forState:UIControlStateNormal];
+        [twBtn setBackgroundImage:twImg forState:UIControlStateNormal];
         
         [faderView addSubview:fbBtn];
         [faderView addSubview:twBtn];

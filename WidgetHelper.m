@@ -48,6 +48,16 @@ static WidgetHelper *sharedWidgetHelper;
     return [UIImage imageNamed:name inBundle:springBoard];
 }
 
+- (UIImage *)ownImageNamed:(NSString *)name
+{
+    if (!ownBundle)
+    {
+        ownBundle = [[NSBundle alloc] initWithPath:@"/System/Library/WeeAppPlugins/NowPlaying.bundle"];
+    }
+    
+    return [UIImage imageNamed:name inBundle:ownBundle];
+}
+
 - (id)preferenceObjectForKey:(NSString *)key
 {
     NSString *path = @"/var/mobile/Library/Preferences/com.jw97.NowPlaying.plist";
