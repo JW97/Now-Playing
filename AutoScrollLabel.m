@@ -24,6 +24,9 @@
 		label[i] = [[UILabel alloc] init];
 		label[i].textColor = [UIColor whiteColor];
 		label[i].backgroundColor = [UIColor clearColor];
+        label[i].shadowColor = [UIColor blackColor];
+        label[i].shadowOffset = CGSizeMake(0.0, 1.0);
+        label[i].font = [UIFont systemFontOfSize:17];
 		[self addSubview:label[i]];
 	}
 	
