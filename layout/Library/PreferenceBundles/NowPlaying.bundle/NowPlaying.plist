@@ -12,7 +12,7 @@
 			<key>isStaticText</key>
 			<true/>
 			<key>label</key>
-			<string>Now Playing Settings</string>
+			<string>Settings</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -37,6 +37,20 @@
 				<integer>0</integer>
 				<integer>1</integer>
 			</array>
+			<key>defaults</key>
+			<string>com.jw97.NowPlaying</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>key</key>
+			<string>shouldShowSocialButtons</string>
+			<key>label</key>
+			<string>Shows Social Buttons</string>
+			<key>PostNotification</key>
+			<string>com.jw97.NowPlaying.settingsChanged</string>
 			<key>defaults</key>
 			<string>com.jw97.NowPlaying</string>
 		</dict>

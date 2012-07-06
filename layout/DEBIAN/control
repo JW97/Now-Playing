@@ -1,7 +1,7 @@
 Package: com.JW97.nowplaying
 Name: Now Playing
-Depends: firmware (>= 5.0), com.saurik.substrate.safemode, applist, preferenceloader
-Version: 1.1.1
+Depends: firmware (>= 5.0), com.saurik.substrate.safemode, applist, preferenceloader, org.thebigboss.customwidgeticons
+Version: 1.2
 Architecture: iphoneos-arm
 Description: An awesome widget for the notification center!
 Maintainer: J_W97

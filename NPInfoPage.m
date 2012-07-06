@@ -190,7 +190,7 @@
 
 - (void)wasTapped
 {
-    if (![[objc_getClass("SBAwayController") sharedAwayController] isDeviceLocked])
+    if (![[objc_getClass("SBAwayController") sharedAwayController] isLocked])
     {
         [[objc_getClass("SBUIController") sharedInstance] activateApplicationFromSwitcher:[mediaController nowPlayingApplication]];
     }

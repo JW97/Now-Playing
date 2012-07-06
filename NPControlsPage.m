@@ -112,6 +112,15 @@
         [fbBtn setBackgroundImage:fbImg forState:UIControlStateNormal];
         [twBtn setBackgroundImage:twImg forState:UIControlStateNormal];
         
+        NSNumber *shouldShow = [widgetHelper preferenceObjectForKey:@"shouldShowSocialButtons"];
+        shouldShowSocialButtons = [shouldShow boolValue];
+        
+        if (shouldShowSocialButtons == NO)
+        {
+            fbBtn.hidden = YES;
+            twBtn.hidden = YES;
+        }
+        
         [faderView addSubview:fbBtn];
         [faderView addSubview:twBtn];
         
@@ -162,6 +171,14 @@
         [bgView removeFromSuperview];
         [self addSubview:bgView];
     }
+}
+
+- (void)setShowsSocialButtons:(BOOL)should
+{    
+    shouldShowSocialButtons = should;
+    
+    fbBtn.hidden = !should;
+    twBtn.hidden = !should;
 }
 
 - (void)nowPlayingInfoChanged
@@ -280,16 +297,13 @@
         }
         
         viewController = [[UIViewController alloc] init];
+                
+        window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         
-        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
-        {            
-            window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-            [window setAutorotates:YES];
-        }
-        else
-        {
-            window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        }
+        SpringBoard *sb = (SpringBoard *)[objc_getClass("SpringBoard") sharedApplication];
+        int orientation = [sb _frontMostAppOrientation];
+        [window _updateToInterfaceOrientation:orientation animated:NO];
+        [window setAutorotates:YES];
         
         window.rootViewController = viewController;  
         window.windowLevel = UIWindowLevelAlert;

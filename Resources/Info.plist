@@ -23,7 +23,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>AppBundleID</key>
-	<string>com.apple.mobileipod</string>
+	<string>com.JW97.nowplaying</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
@@ -31,5 +31,7 @@
 	</array>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleIconFile</key>
+	<string>Icon.png</string>
 </dict>
 </plist>

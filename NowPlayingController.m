@@ -28,7 +28,7 @@ static NSBundle *_NowPlayingWeeAppBundle = nil;
 {
 	if((self = [super init]) != nil)
     {
-		
+        
 	} return self;
 }
 

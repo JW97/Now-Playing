@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UIKit/UIApplication2.h>
 #import <UIKit/UIWindow2.h>
 #import <Twitter/Twitter.h>
+#import <SpringBoard/SpringBoard-Class.h>
 #import <SpringBoard/SBMediaController.h>
 #import <libapplist/ALApplicationList.h>
 #import "WidgetHelper.h"
@@ -30,12 +32,14 @@
     
     UIButton *twBtn;
     UIButton *fbBtn;
+    BOOL shouldShowSocialButtons;
     
     UIViewController *viewController;
     UIWindow *window;
 }
 
 - (void)setShowsBackground:(BOOL)should;
+- (void)setShowsSocialButtons:(BOOL)should;
 
 - (void)nowPlayingInfoChanged;
 

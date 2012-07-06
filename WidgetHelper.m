@@ -9,6 +9,15 @@
 #import "WidgetHelper.h"
 
 static WidgetHelper *sharedWidgetHelper;
+static NSDictionary *preferences;
+
+static void PreferencesChangedCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo)
+{    
+    NSString *path = @"/var/mobile/Library/Preferences/com.jw97.NowPlaying.plist";
+    
+    [preferences release];
+    preferences = [[NSDictionary alloc] initWithContentsOfFile:path];
+}
 
 @implementation WidgetHelper
 
@@ -60,9 +69,15 @@ static WidgetHelper *sharedWidgetHelper;
 
 - (id)preferenceObjectForKey:(NSString *)key
 {
-    NSString *path = @"/var/mobile/Library/Preferences/com.jw97.NowPlaying.plist";
+    if (!preferences)
+    {        
+        NSString *path = @"/var/mobile/Library/Preferences/com.jw97.NowPlaying.plist";
+        
+        preferences = [[NSDictionary alloc] initWithContentsOfFile:path];
+    }
     
-    id obj = [[NSDictionary dictionaryWithContentsOfFile:path] objectForKey:key];
+    id obj = [preferences objectForKey:key];
+    NSLog(@"%@", obj);
     
     return obj;
 }
@@ -71,18 +86,23 @@ static WidgetHelper *sharedWidgetHelper;
 {
     if ((self = [super init]))
     {
-        
+        CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, PreferencesChangedCallback, CFSTR("com.jw97.NowPlaying.settingsChanged"), NULL, CFNotificationSuspensionBehaviorCoalesce);
     }
     return self;
 }
 
 - (void) dealloc
-{
+{    
+    CFNotificationCenterRemoveObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, CFSTR("com.jw97.NowPlaying.settingsChanged"), NULL);
+    
     [_stretchableBgImg release];
     _stretchableBgImg = nil;
     
     [springBoard release];
     springBoard = nil;
+    
+    [preferences release];
+    preferences = nil;
     
     [super dealloc];
 }
